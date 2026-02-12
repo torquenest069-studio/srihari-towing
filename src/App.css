@@ -1,0 +1,918 @@
+#root {
+  min-height: 100%;
+  background: transparent;
+}
+
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f8f9fb;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  z-index: 10;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo p { margin: 0; font-size: 12px; color: gray; }
+.menu {
+  display: flex;
+  flex-wrap: wrap;       /* Allows wrapping on very small screens */
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;           /* Fluid spacing between links */
+  margin: 0.5rem 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333333;        /* High contrast for readability */
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.2rem;
+  position: relative;    /* Needed for the hover underline effect */
+  transition: color 0.3s ease;
+}
+
+/* --- Interactive Hover Effect --- */
+.menu a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #25D366; /* Your brand green */
+  transition: width 0.3s ease;
+}
+
+.menu a:hover {
+  color: #25D366;
+}
+
+.menu a:hover::after {
+  width: 100%; /* Line grows from left to right on hover */
+}
+
+
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+.btn-icon {
+  font-size: 14px;
+}
+
+.call {
+  background: black;
+  color: white;
+}
+
+.call:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.whatsapp:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+}
+
+
+
+.section {
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.section.light { background: white; }
+
+.grid {
+  display: grid;
+  /* Fluid columns that adjust automatically based on screen size */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden; /* Clips image corners to the radius */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px; /* Uniform height for all images */
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Prevents image distortion */
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ensures cards are same height even with different text length */
+}
+
+.card-content h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+#areas .grid {
+  display: grid;
+  /* Creates as many columns as fit, minimum 160px wide */
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+  gap: 15px;
+  margin-top: 30px;
+}
+
+/* --- Refined Area Card --- */
+.card.area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 12px 18px;
+  background: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2d3748;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  cursor: default;
+}
+
+/* --- Interactive Effect --- */
+.card.area:hover {
+  background: #f8fafc;
+  border-color: #25D366; /* Your brand green */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
+  color: #1a202c;
+}
+
+/* --- Icon Styling --- */
+.card.area span {
+  font-size: 1.1rem;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+}
+
+.emergency {
+  background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%);
+  color: #ffffff;
+  padding: 2.5rem 1rem; /* Reduced from 6rem to 2.5rem */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emergency h1 {
+  font-size: 1.5rem; /* Smaller heading */
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.emergency p {
+  font-size: 0.9rem; /* Smaller text */
+  color: #aaaaaa;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Smaller Buttons Container --- */
+.emergency .btns {
+  display: flex;
+  flex-direction: column; 
+  gap: 0.8rem; /* Tighter gap */
+  width: 100%;
+  max-width: 320px; /* Narrower width for a compact feel */
+}
+
+/* --- Small Button Styles --- */
+.emergency .btns button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px; /* Reduced padding for smaller buttons */
+  font-size: 0.85rem;  /* Compact font size */
+  font-weight: 600;
+  border-radius: 8px;  /* Slightly sharper corners for a smaller look */
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.banner-btn-call {
+  background: #ffffff;
+  color: #000000;
+}
+
+.banner-btn-whatsapp {
+  background: #25D366;
+  color: #ffffff;
+}
+
+.emergency .btns button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+/* --- Call Button Styles --- */
+.banner-btn-call {
+  background: #ffffff;
+  color: #000000;
+}
+
+.banner-btn-call:hover {
+  background: #f0f0f0;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* --- WhatsApp Button Styles --- */
+.banner-btn-whatsapp {
+  background: #25D366; /* WhatsApp Green */
+  color: #ffffff;
+}
+
+.banner-btn-whatsapp:hover {
+  background: #20bd5a;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+}
+
+
+
+
+.banner {
+  /* This creates the smooth transition from pure black to dark grey */
+  background: linear-gradient(90deg, #000000 0%, #1a1a1a 60%, #333333 100%);
+  color: #ffffff;
+  padding: 100px 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px; /* Adjust based on your preferred height */
+}
+
+/* Ensure the container width matches the image layout */
+.banner-container {
+  max-width: 900px;
+}
+
+.banner-container h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+}
+
+.banner-container p {
+  font-size: 1.25rem;
+  color: #cccccc; /* Subdued grey text for better readability */
+  margin-bottom: 45px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.banner-actions {
+  display: flex;
+  flex-direction: column; /* Stacked by default for mobile thumb-access */
+  gap: 1rem;
+  width: 100%;
+  max-width: 450px;       /* Prevents buttons from getting too wide */
+  margin: 2rem auto 0;    /* Centers container and adds top spacing */
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-actions button {
+  display: flex;
+  align-items: center;    /* Vertically centers icon and text */
+  justify-content: center; /* Horizontally centers content */
+  gap: 12px;              /* Precise spacing between icon and text */
+  width: 100%;            /* Full width on mobile for easier tapping */
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;    /* Modern pill shape */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Call Button: Dark & Sleek --- */
+.banner-btn-call {
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #333 !important;
+}
+
+.banner-btn-call:hover {
+  background: #2d2d2d;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* --- WhatsApp Button: High Contrast White --- */
+.banner-btn-whatsapp {
+  background: #ffffff;
+  color: #000000;
+}
+
+.banner-btn-whatsapp:hover {
+  background: #25D366; /* Changes to WhatsApp Green on hover */
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+#why {
+  background-color: #f8f9fb;
+  padding: 80px 10%;
+}
+
+#why .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+/* --- Feature Card Styling --- */
+.feature-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border-color: #25D366; /* Your brand green */
+}
+
+/* --- Icon Container --- */
+.feature-icon {
+  font-size: 2.5rem;
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.1); /* Soft background for the icon */
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  background: #25D366;
+  color: white;
+  transform: rotateY(360deg); /* Subtle spin on hover */
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+
+
+
+
+/*Portfolio*/
+.portfolio-section {
+  background-color: #ffffff;
+  padding: 80px 0;
+  width: 100%;
+}
+
+/* Restricts images to the center area (your green lines) */
+.content-boundary {
+  max-width: 1200px; /* Fixed width for readability */
+  margin: 0 auto;    /* Centers the slider */
+  overflow: hidden;  /* Keeps images within the boundary */
+}
+
+.header-text {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.slider-viewport {
+  width: 100%;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px; /* Space between cards */
+  width: max-content;
+  animation: scrollLoop 30s linear infinite;
+}
+
+/* Math to fit exactly 3 images in 1600px including gaps */
+
+/* Math: (1600px - (2 gaps * 20px)) / 3 cards = 520px width */
+.portfolio-card {
+  width: calc((1600px - 40px) / 3); 
+  height: 320px;
+  background: #1a1a24;
+  border-radius: 12px;
+  padding: 20px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.portfolio-container {
+  width: 1600px;
+  display: flex;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures cards fill the space correctly */
+}
+
+/* Seamless Looping Animation */
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 10px)); }
+}
+
+/* Progress indicator */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.white-progress-bar {
+  width: 200px;
+  height: 2px;
+  background-color: #eee;
+  position: relative;
+}
+
+.white-progress-fill {
+  width: 40%;
+  height: 100%;
+  background-color: #000;
+  position: absolute;
+  animation: progressMove 30s linear infinite;
+}
+
+@keyframes progressMove {
+  0% { left: 0; }
+  100% { left: 60%; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .nav {
+    padding: 15px 20px;
+  }
+
+  .banner-container h1 {
+    font-size: 2.8rem; /* Scaled down for smaller viewports */
+  }
+
+  .section {
+    padding: 40px 5%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablets */
+  }
+
+  .emergency .btns {
+    flex-direction: row; /* Side-by-side on tablets */
+    max-width: 100%;
+  }
+
+  .emergency .btns button {
+    flex: 1;
+  }
+}
+
+/* 2. MOBILE STYLES (Applies to devices 768px and below) */
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-direction: column; /* Stacks logo, menu, and buttons */
+    height: auto;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .menu {
+    gap: 1rem;
+    order: 2; /* Positions menu links in the middle */
+  }
+
+@media (max-width: 768px) {
+  .actions {
+    display: none !important;
+  }
+}
+
+  .banner {
+    padding: 60px 20px;
+    min-height: auto;
+  }
+
+  .banner-container h1 {
+    font-size: 2.2rem;
+  }
+
+  .banner-container p {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .banner-actions {
+    flex-direction: column; /* Stacked for easy thumb-tapping */
+    width: 100%;
+  }
+
+  .banner-actions button {
+    width: 100%;
+    min-width: unset;
+  }
+
+.grid {
+    grid-template-columns: 1fr; /* Single column for easier scrolling */
+    max-width: 450px;
+  }
+
+  .emergency h1 {
+    font-size: 1.3rem;
+  }
+
+  .emergency .btns {
+    flex-direction: column; /* Stacked emergency buttons */
+    width: 100%;
+  }
+
+  .emergency .btns button {
+    width: 100%;
+    min-width: unset;
+  }
+
+  #why {
+    padding: 60px 20px;
+  }
+  
+  .feature-card {
+    padding: 30px 20px;
+  }
+
+  .footer {
+    padding: 40px 5%;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+}
+
+/* 3. SMALL MOBILE STYLES (Applies to screens 480px and below) */
+@media screen and (max-width: 480px) {
+  .menu a {
+    font-size: 0.85rem;
+    padding: 0.3rem;
+  }
+
+  .logo h3 {
+    font-size: 1rem;
+  }
+
+  .logo p {
+    font-size: 10px;
+  }
+}
+
+
+@media print {
+  body { display: none !important; }
+}
+
+
+
+/* App.css */
+
+/* 1. Global selection and touch menu block */
+* {
+  -webkit-touch-callout: none !important; /* Disables long-press "Save Image" */
+  -webkit-user-select: none !important;  /* Disables text highlight */
+  user-select: none !important;
+}
+
+/* 2. Visual protection triggered by JS */
+.content-protected {
+  filter: blur(40px) brightness(0) !important;
+  transition: filter 0.2s ease;
+  pointer-events: none !important;
+}
+
+/* 3. The "Hard Block" for Printing */
+@media print {
+  body {
+    display: none !important;
+  }
+}
+
+/* Allow your phone numbers to remain clickable and selectable */
+.selectable {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  pointer-events: auto !important;
+}
+
+
+
+
+.bannerhype a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #FFFFFF; /* Bright white */
+  /* Remove or comment out the gradient/clip properties to show the solid color */
+  background: none; 
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  animation: none; /* Disables the shimmer movement */
+}
+
+/* For Tablets (Screens 768px and below) */
+@media (max-width: 768px) {
+  .bannerhype a {
+    font-size: 14px; /* Slightly smaller text for tablets */
+    padding: 10px;
+  }
+}
+
+/* For Mobile Phones (Screens 480px and below) */
+@media (max-width: 480px) {
+  .bannerhype a {
+    font-size: 12px; /* Smaller font for cramped screens */
+    display: block;  /* Makes the link fill the width for easier tapping */
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+
+
+/* ===== MAIN FOOTER ===== */
+.footer {
+ background: #111111;   /* Dark blue like your image */
+  color: #ffffff;
+  padding: 60px 8%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+/* ===== EACH COLUMN ===== */
+.footer > div {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* ===== HEADINGS ===== */
+.footer h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.footer h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* ===== PARAGRAPHS ===== */
+.footer p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #dcdcdc;
+}
+
+/* ===== CONTACT ITEMS ===== */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-item:hover {
+  color: #7ed957;
+}
+
+/* ===== SOCIAL SECTION TITLE ===== */
+.social-section h4 {
+  margin-top: 25px;
+  color: #7ed957;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  width: 38px;
+  height: 38px;
+  background: #ffffff;
+  color: #0f1b3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 18px;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: #7ed957;
+  transform: translateY(-4px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .footer {
+    padding: 50px 6%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer > div {
+    width: 100%;
+  }
+
+  .contact-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer h3 {
+    font-size: 20px;
+  }
+
+  .footer h4 {
+    font-size: 15px;
+  }
+}
+
+
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-bottom {
+  width: 100%;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+  text-align: center;
+}
+
+.developer-name {
+  color: #7ed957;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.developer-name:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
